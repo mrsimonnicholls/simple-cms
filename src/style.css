@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2rem;
+  background: #f9f9f9;
+  color: #333;
+}
+
+#posts article {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: white;
+}
