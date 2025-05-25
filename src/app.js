@@ -1,4 +1,4 @@
-fetch('/netlify/functions/get-posts')
+fetch('/.netlify/functions/get-posts')
   .then(res => res.json())
   .then(posts => {
     const container = document.querySelector('#posts');
