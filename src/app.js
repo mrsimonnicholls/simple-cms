@@ -15,7 +15,7 @@ fetch('/.netlify/functions/get-posts')
       article.innerHTML = `
         <h2>${post.title}</h2>
         <p>${post.content}</p>
-        <h6>Posted on ${date}</h6>
+        <h6>Posted on ${post.created_at}</h6>
       `;
 
       container.appendChild(article);
