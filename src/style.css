@@ -1,9 +1,20 @@
 @import url(reset.css);
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
+:root {
+  /* CSS HSL */
+--poppy: hsla(2, 67%, 52%, 1);
+--bleu-de-france: hsla(205, 100%, 48%, 1);
+--pine-green: hsla(173, 71%, 28%, 1);
+--celeste: hsla(174, 73%, 80%, 1);
+--isabelline: hsla(40, 43%, 96%, 1);
+--uranian-blue: hsla(206, 100%, 84%, 1);
+}
+
+
 body {
   font-family: 'JetBrains Mono', monospace;
-  background: #f7f7f7;
+  background: var(--isabelline);
   margin-top:3rem;
 }
 
@@ -15,6 +26,7 @@ nav {
   top:0;
   width:100%;
   border-bottom: 1px solid black;
+  background-color: var(--uranian-blue);
 
   & ul {
     display: flex;
@@ -73,9 +85,19 @@ button {
   padding: 0.6rem 1rem;
   font-size: 1rem;
   cursor: pointer;
+  background-color: var(--bleu-de-france);
+  border-radius: 4px;
+  border: 2px solid var(--bleu-de-france);
+  color:white;
+}
+
+button:hover {
+  background-color: var(--isabelline);
+  border-color: var(--bleu-de-france);
+  color: var(--bleu-de-france);
 }
 
 #message {
   margin-top: 1rem;
-  color: green;
+  color: var(--pine-green);
 }
