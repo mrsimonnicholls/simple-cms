@@ -13,12 +13,9 @@ document.querySelector('#post-form').addEventListener('submit', async (e) => {
   const message = document.querySelector('#message');
 
   if (response.ok) {
-    const data = await response.json();
-    message.textContent = `✅ Post created: ${data.title}`;
+    message.textContent = 'Post created!';
   } else {
-    const err = await response.json();
-    message.textContent = `❌ Error: ${err.error}`;
-    message.style.color = 'red';
+    message.textContent = 'Something went wrong. Try again.';
   }
 
   e.target.reset();

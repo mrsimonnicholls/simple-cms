@@ -1,48 +1,22 @@
-const { createClient } = require('@supabase/supabase-js');
+const { supabase } = require('./_supabase');
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
-
-exports.handler = async function (event) {
-  // Only allow POST requests
+exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method Not Allowed' }),
-    };
+    return { statusCode: 405 };
   }
 
-  try {
-    const { title, content } = JSON.parse(event.body);
+  const { title, content } = JSON.parse(event.body);
 
-    if (!title || !content) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing title or content' }),
-      };
-    }
+  const { data, error } = await supabase.from('posts').insert([
+    { title, content, author: 'Simon Nicholls' }
+  ]);
 
-    const { data, error } = await supabase.from('posts').insert([
-      { title, content }
-    ]);
-
-    if (error) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: error.message }),
-      };
-    }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data[0]),
-    };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Invalid request format' }),
-    };
+  if (error) {
+    return { statusCode: 500, body: error.message };
   }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(data[0])
+  };
 };

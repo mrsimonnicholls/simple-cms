@@ -1,9 +1,4 @@
-const { createClient } = require('@supabase/supabase-js');
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
+const { supabase } = require('./_supabase');
 
 exports.handler = async function () {
   const { data, error } = await supabase.from('posts').select('*');
