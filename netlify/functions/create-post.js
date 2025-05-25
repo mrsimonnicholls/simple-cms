@@ -7,9 +7,12 @@ exports.handler = async (event) => {
 
   const { title, content } = JSON.parse(event.body);
 
-  const { data, error } = await supabase.from('posts').insert([
+  const { data, error } = await supabase
+    .from('posts')
+    .insert([
     { title, content, author: 'Simon Nicholls' }
-  ]);
+  ])
+  .select();
 
   if (error) {
     return { statusCode: 500, body: error.message };
