@@ -8,6 +8,26 @@ body {
   margin: auto;
 }
 
+nav {
+  display: flex;
+  justify-content: end;
+  padding: 0.5rem 3rem;
+  position: fixed;
+  top:0;
+  width:100%;
+  border-bottom: 1px solid black;
+
+  ul {
+    display: flex;
+    gap:2rem;
+    list-style-type: none;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
 #posts article {
   border: 1px solid #ddd;
   padding: 1rem;
